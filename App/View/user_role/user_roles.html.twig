@@ -1,0 +1,28 @@
+{% include 'header.html.twig' %}
+{#
+{{ dump(userRoles) }}
+#}
+
+<div class="container">
+    <h1 class="display-5 text-center mt-3">Jogosultságok</h1>
+    <table class="table table-hover mt-5 text-center">
+        <tr>
+            <th>ID</th>
+            <th>Név</th>
+            <th>Állapot</th>
+            <th>Műveletek</th>
+        </tr>
+        {% for userRole in userRoles %}
+        <tr>
+            <td>{{userRole.id}}</td>
+            <td>{{userRole.name}}</td>
+            <td>{{userRole.status ? 'Aktív': 'Inaktív'}}</td>
+            <td>
+                <a class='btn btn-warning' href='userRoleEdit/{{userRole.id}}'> <i class="fa-solid fa-edit"></i> Módosít</a>
+                <a class='btn btn-danger' href='userRoleDelete/{{userRole.id}}'> <i class="fa-solid fa-trash"></i> Töröl</a>
+           </td>
+        {% endfor %}
+        </tr>
+    </table>
+</div>
+{% include 'footer.html.twig' %}

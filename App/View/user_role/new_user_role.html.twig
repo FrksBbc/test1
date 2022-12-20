@@ -1,0 +1,24 @@
+{% include 'header.html.twig' %}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="col-sm-6">
+    <h1 class="display-5 text-center mb-2"> Új jogosultság</h1>
+           <form action="userRoleAdd" method="POST">
+            <div class="form-group">
+                <label for="name">Név*</label>
+                <input type="text" class="form-control" name="name" id="name" required>
+            </div>
+            <div class="form-check mt-3">
+                <input type="checkbox" name="status" id="status" checked>
+                <label for="status">Aktív</label>
+            </div>
+            <div class="form-group mt-3 justify-content-between d-flex">
+                <a href="javascript:history.go(-1)" class="btn btn-warning"> <i class="fa-solid fa-arrow-left"></i> VISSZA </a>
+                <button type="submit" class="btn btn-success text-white" name="save"> <i class="fa-solid fa-floppy-disk"></i> MENT </button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% include 'footer.html.twig' %}

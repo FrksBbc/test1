@@ -1,0 +1,43 @@
+{% include 'header.html.twig' %}
+{#
+{{ dump(user) }}
+#}
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="col-sm-6">
+    <h1 class="display-5 text-center mb-2"> Felhasználó módosítás</h1>
+           <form action="/userEdit" method="POST">
+            <input type="hidden" value="{{ user.id }}" name="id">
+            <div class="form-group">
+                <label for="lastName">Vezetéknév*</label>
+                <input type="text" class="form-control" name="lastName" id="lastName" value ="{{user.last_name}}" required>
+            </div>
+            <div class="form-group">
+                <label for="firstName">Keresztnév*</label>
+                <input type="text" class="form-control" name="firstName" id="firstName" value="{{user.first_name}}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" class="form-control" name="email" id="email" value ="{{user.email}}" required>
+            </div>
+            <div class="form-group">
+                <label for="userRole">Jogosultság*</label>
+                <select class="form-select" name="userRole" id="userRole">
+                    {% for userRole in userRoles %}
+                    <option value="{{userRole.id}}" {{ userRole.id == user.role_id ? 'selected':''}}>{{userRole.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>  
+            <div class="form-check mt-3">
+                <input type="checkbox" name="status" id="status" {{ user.status ? 'checked':''}}>
+                <label for="status">Aktív</label>
+            </div>
+            <div class="form-group mt-3 justify-content-between d-flex">
+                <a href="javascript:history.go(-1)" class="btn btn-warning"> <i class="fa-solid fa-arrow-left"></i> VISSZA </a>
+                <button type="submit" class="btn btn-success text-white" name="update"> <i class="fa-solid fa-floppy-disk"></i> MÓDOSÍT </button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% include 'footer.html.twig' %}
